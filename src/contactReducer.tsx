@@ -1,18 +1,12 @@
 import { Action, lastNameAction } from "./action"
 
 export interface contactState{
-    contacts: string[]
-}
-
-export interface lastNameState{
+    contacts: string[],
     lastName: string[]
 }
 
 const initialState = {
-    contacts: []
-}
-
-const initialState1 = {
+    contacts: [],
     lastName: []
 }
 
@@ -29,7 +23,7 @@ export const contactReducer = (state:contactState = initialState, action: Action
 }
 
 
-export const lastNameReducer = (state:lastNameState = initialState1, action: lastNameAction) => {
+export const lastNameReducer = (state:contactState = initialState, action: lastNameAction) => {
     switch(action.type){
         case "ADD_LASTNAME": {
             return{...state, lastName: [...state.lastName, action.payload]}
