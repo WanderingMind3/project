@@ -31,11 +31,11 @@ export const Form:React.FC<NewFormProps> = ({ saveContacts }) => {
         <>
         <div>
 
-            <input onChange={updateContact} value={contact} type="text" name="FirstName" placeholder="First Name" />
-            <input onChange={updateLastNameContact} value={lastNameContact} type="text" name="LastName" placeholder="Last Name" />
+            <input onChange={updateContact} value={contact} type="text" name="FirstName" placeholder="First Name" required={true}/>
+            <input onChange={updateLastNameContact} value={lastNameContact} type="text" name="LastName" placeholder="Last Name" required={true}/>
             <div>
 
-                <input  type="radio" id="active" name="status" value="active"/>
+                <input  type="radio" id="active" name="status" value="active" checked={true}/>
                 <label htmlFor="active">Active</label>
 
                 <input type="radio" id="inactive" name="status" value="inactive" />
