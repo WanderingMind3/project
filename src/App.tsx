@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { addContact } from "./action"
 import Navbar from "./navbar"
 import Map from "./leaflet"
+import { useState } from "react"
 
 function App() {
 
@@ -26,13 +27,26 @@ function App() {
       break;
   }
 
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    
+    setIsShown(current => !current);
+  };
+
   return (
     <>
+
+      <button className="p-5 rounded-sm" onClick={handleClick}>Create Contact</button>
+
+      {isShown && (
+        <Form saveContacts={onAddContact} />
+      )}
 
       <Navbar />
       {Component}
 
-      <Form saveContacts={onAddContact} />
+      
 
       <hr />
 

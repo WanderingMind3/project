@@ -25,6 +25,8 @@ export const Form:React.FC<NewFormProps> = ({ saveContacts }) => {
         setLastNameContact("")
 
     }
+
+    
    
 
     return(
