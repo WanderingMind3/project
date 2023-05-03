@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { Form } from "./form"
-import { contactState } from "./contactReducer"
+import { contactState, lastNameState } from "./contactReducer"
 import { useDispatch } from "react-redux"
-import { addContact } from "./action"
+import { addContact, addLastName } from "./action"
 
 function App() {
 
@@ -13,16 +13,25 @@ function App() {
     dispatch(addContact(contact))
   }
 
+  const lastName = useSelector<lastNameState, lastNameState["lastName"]>((state) => state.lastName)
+  const dispatchLastName = useDispatch()
+
+  const onAddLastName = (lastName:string) => {
+    dispatchLastName(addLastName(lastName))
+  }
+
   return (
     <>
 
-      <Form saveContacts={onAddContact} />
+      <Form saveContacts={onAddContact } saveLastName={onAddLastName} />
 
       <hr />
 
       <ul>
         {contacts.map((contact) =>{
           return <li key={contact}>{contact}</li>
+        })} {lastName.map((lastName) =>{
+          return <li key={lastName}>{lastName}</li>
         })}
       </ul>
 

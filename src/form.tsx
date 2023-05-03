@@ -3,12 +3,15 @@ import { ChangeEvent } from "react";
 
 interface NewFormProps{
     saveContacts(contact:string): void;
+    saveLastName(lastName:string): void;
 }
 
-export const Form:React.FC<NewFormProps> = ({ saveContacts }) => {
+
+export const Form:React.FC<NewFormProps> = ({ saveContacts, saveLastName }) => {
 
     const [contact, setContact] = React.useState("")
     const [lastNameContact, setLastNameContact] = React.useState("")
+
 
 
     const updateContact = (event:ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +21,7 @@ export const Form:React.FC<NewFormProps> = ({ saveContacts }) => {
         setLastNameContact(event.target.value)
     }
 
+ 
     const onSaveContactClick = () => {
         saveContacts(contact)
         saveContacts(lastNameContact)
