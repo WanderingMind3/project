@@ -25,26 +25,24 @@ export const Form:React.FC<NewFormProps> = ({ saveContacts }) => {
         setLastNameContact("")
 
     }
-
-    
    
 
     return(
         <>
-        <div>
+        <div className="m-5">
 
-            <input onChange={updateContact} value={contact} type="text" name="FirstName" placeholder="First Name" required={true}/>
-            <input onChange={updateLastNameContact} value={lastNameContact} type="text" name="LastName" placeholder="Last Name" required={true}/>
-            <div>
+            <input onChange={updateContact} value={contact} type="text" name="FirstName" placeholder="First Name" />
+            <input onChange={updateLastNameContact} value={lastNameContact} type="text" name="LastName" placeholder="Last Name" />
+            <div className="mt-2">
 
-                <input  type="radio" id="active" name="status" value="active" checked={true}/>
+                <input  type="radio" id="active" name="status" value="active"/>
                 <label htmlFor="active">Active</label>
 
-                <input type="radio" id="inactive" name="status" value="inactive" />
+                <input className="ml-2"type="radio" id="inactive" name="status" value="inactive" />
                 <label htmlFor="inactive">Inactive</label>
             </div>
 
-            <button onClick={onSaveContactClick}>Save Contact</button>
+            <button className="m-2" onClick={onSaveContactClick}>Save Contact</button>
 
         </div>
     </>

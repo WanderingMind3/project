@@ -4,7 +4,7 @@ import { contactState } from "./contactReducer"
 import { useDispatch } from "react-redux"
 import { addContact } from "./action"
 import Navbar from "./navbar"
-import Map from "./leaflet"
+import {Map} from "./leaflet"
 import { useState } from "react"
 
 function App() {
@@ -23,13 +23,13 @@ function App() {
       break;
 
     case "/Map":
-      Component = Map
+      Component = <Map/>
       break;
   }
 
   const [isShown, setIsShown] = useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = () => {
     
     setIsShown(current => !current);
   };
@@ -37,30 +37,26 @@ function App() {
   return (
     <>
 
+      <Navbar />
+      {Component}
+
       <button className="p-5 rounded-sm" onClick={handleClick}>Create Contact</button>
 
       {isShown && (
         <Form saveContacts={onAddContact} />
       )}
 
-      <Navbar />
-      {Component}
-
-      
-
       <hr />
 
       <ul className="m-3 p-3">
         {contacts.map((contact) => {
-          return <li className=" m-1.5 sm:justify-between justify-center items-center " key={contact}>{contact}</li>
+          return <li className=" m-1.5 grid " key={contact}>{contact}</li>
         })}
         <br />
       </ul>
 
-
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
